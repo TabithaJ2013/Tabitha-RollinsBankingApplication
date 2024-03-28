@@ -27,4 +27,4 @@ function Deposit() {
     );
 }
 
-export default BankAccount;
+export default Deposit;
