@@ -8,7 +8,7 @@
 function Deposit() {
     const [balance, setBalance] = React.useState(100);
     const [depositAmount, setDepositAmount] = React.useState('');
-
+    const [status, setStatus]     = React.useState('');
     const handleDeposit = (e) => {
         e.preventDefault();
         const amount = parseFloat(depositAmount);
@@ -19,24 +19,24 @@ function Deposit() {
     };
 
     return (
-        <Card>
-            <Card.Body>
-                <Card.Title>Bank Account</Card.Title>
-                <Card.Text>Balance: ${balance.toFixed(2)}</Card.Text>
-                <Form onSubmit={handleDeposit}>
-                    <Form.Group controlId="depositAmount">
-                        <Form.Label>Deposit Amount</Form.Label>
-                        <Form.Control
-                            type="number"
-                            placeholder="Enter deposit amount"
-                            value={depositAmount}
-                            onChange={(e) => setDepositAmount(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">Deposit</Button>
-                </Form>
-            </Card.Body>
-        </Card>
+        <Card
+        bgcolor="primary"
+      header="Create Account"
+      status={status}
+      body={
+                <><h1>Bank Account</h1><div>Balance: ${balance.toFixed(2)}</div><form onSubmit={handleDeposit}>
+          <form.Group controlId="depositAmount">
+            <span>Deposit Amount</span>
+            <input
+              type="number"
+              placeholder="Enter deposit amount"
+              value={depositAmount}
+              onChange={(e) => setDepositAmount(e.target.value)} />
+          </form.Group>
+          <Button variant="primary" type="submit">Deposit</Button>
+        </form></>
+      }
+        />
     );
 }
 
