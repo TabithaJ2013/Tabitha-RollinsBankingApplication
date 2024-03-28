@@ -5,14 +5,28 @@
 // }
 
 
+
+function validate(field, label){
+  if (isNaN(field) && field < 0) {
+    setStatus('Error: ' + label);
+    setTimeout(() => setStatus(''),3000);
+    return false;
+  }
+  return true;
+}
+
 function Deposit() {
     const [balance, setBalance] = React.useState(100);
     const [depositAmount, setDepositAmount] = React.useState('');
     const [status, setStatus]     = React.useState('');
+    const ctx = React.useContext(UserContext)
+
     const handleDeposit = (e) => {
+      
         e.preventDefault();
         const amount = parseFloat(depositAmount);
-        if (!isNaN(amount) && amount > 0) {
+        if (validate(amount, 'Deposit'))
+         {
             setBalance(prevBalance => prevBalance + amount);
             setDepositAmount('');
         }
