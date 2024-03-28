@@ -7,7 +7,7 @@
 
 
 function validate(field, label){
-  if (isNaN(field) && field < 0) {
+  if (isNaN(field) || field < 0) {
     setStatus('Error: ' + label);
     setTimeout(() => setStatus(''),3000);
     return false;
