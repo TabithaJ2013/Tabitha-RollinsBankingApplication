@@ -5,7 +5,7 @@
 // }
 import React, { useState } from 'react';
 
-function BankAccount() {
+function Deposit() {
     const [balance, setBalance] = useState(100);
 
     const deposit = (amount) => {
